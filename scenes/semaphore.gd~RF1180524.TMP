@@ -1,0 +1,32 @@
+extends Node2D
+
+var currentState
+
+const STATES = {
+	"GREEN" : preload("res://images/semaforo-verde.png"), 
+	"RED" : preload("res://images/semaforo-vermelho.png"), 
+	"YELLOW" : preload("res://images/semaforo-yellow.png")
+}
+
+const ORDER_STATE = STATES
+
+func _init(initialState = STATES.RED):
+	currentState = initialState
+	print(currentState)
+	
+
+func _ready():
+	change_state(self.currentState)
+
+
+func _on_Timer_timeout():
+	change_state(currentState)
+	pass # replace with function body
+
+func change_state(currentState):
+	get_node("Sprite").set_texture(currentState);
+
+func _on_Button_pressed():
+	self.currentState = STATES.size()
+	change_state(self.currentState)
+	pass # replace with function body
