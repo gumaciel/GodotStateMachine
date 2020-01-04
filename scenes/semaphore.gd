@@ -34,3 +34,4 @@ func _on_red_pressed():
 
 func _on_semaphore_teste():
 	pass # replace with function body
+

@@ -1,11 +1,10 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/semaphore.tscn" type="PackedScene" id=2]
 
 [node name="main" type="Node2D"]
-
-script/script = ExtResource( 1 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -13,74 +12,35 @@ __meta__ = {
 [node name="semaphore" parent="." instance=ExtResource( 2 )]
 
 [node name="green" type="Button" parent="."]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 255.0
-margin/top = 296.0
-margin/right = 309.0
-margin/bottom = 316.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
+margin_left = 255.0
+margin_top = 296.0
+margin_right = 309.0
+margin_bottom = 316.0
 text = "GREEN"
-flat = false
 
 [node name="red" type="Button" parent="."]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 257.0
-margin/top = 151.0
-margin/right = 294.0
-margin/bottom = 171.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
+margin_left = 257.0
+margin_top = 151.0
+margin_right = 294.0
+margin_bottom = 171.0
 text = "RED"
-flat = false
 
 [node name="yellow" type="Button" parent="."]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 246.0
-margin/top = 220.0
-margin/right = 310.0
-margin/bottom = 240.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
+margin_left = 246.0
+margin_top = 220.0
+margin_right = 310.0
+margin_bottom = 240.0
 text = "YELLOW"
-flat = false
 
 [node name="current_state" type="Label" parent="."]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 447.0
-margin/top = 509.0
-margin/right = 538.0
-margin/bottom = 523.0
+margin_left = 447.0
+margin_top = 509.0
+margin_right = 538.0
+margin_bottom = 523.0
+mouse_filter = 1
+size_flags_vertical = 0
 text = "Not yet changed"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
 [connection signal="currentState_changed" from="semaphore" to="." method="_on_semaphore_currentState_changed"]
-
 [connection signal="pressed" from="green" to="semaphore" method="_on_green_pressed"]
-
 [connection signal="pressed" from="red" to="semaphore" method="_on_red_pressed"]
-
 [connection signal="pressed" from="yellow" to="semaphore" method="_on_yellow_pressed"]
-
-
