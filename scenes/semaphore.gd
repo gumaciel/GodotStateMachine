@@ -8,6 +8,7 @@ const STATES = {
 	"GREEN" : preload("res://images/semaforo-verde.png"), 
 }
 var currentState setget setCurrentState
+var nameState setget setNameState
 
 func _init(initialState = STATES.GREEN):
 	currentState = initialState
@@ -22,16 +23,14 @@ func change_state(currentState):
 
 	
 func _on_green_pressed():
+	self.nameState = "GREEN"
 	change_state(STATES.GREEN)
-	
 func _on_yellow_pressed():
+	self.nameState = "YELLOW"
 	change_state(STATES.YELLOW)
-	
 func _on_red_pressed():
+	self.nameState = "RED"
 	change_state(STATES.RED)
-	
 
-
-func _on_semaphore_teste():
-	pass # replace with function body
-
+func setNameState(value):
+	nameState = value
