@@ -34,3 +34,8 @@ func _on_red_pressed():
 
 func setNameState(value):
 	nameState = value
+
+
+func _on_StateMachine_state_changed():
+	get_node("Sprite").set_texture($StateMachine.current_state.IMAGE);
+	pass # Replace with function body.

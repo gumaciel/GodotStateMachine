@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/semaphore.tscn" type="PackedScene" id=2]
+[ext_resource path="res://StateMachine/StateMachine.gd" type="Script" id=3]
+[ext_resource path="res://StateMachine/Green.gd" type="Script" id=4]
+[ext_resource path="res://StateMachine/Yellow.gd" type="Script" id=5]
+[ext_resource path="res://StateMachine/Red.gd" type="Script" id=6]
 
 [node name="main" type="Node2D"]
 script = ExtResource( 1 )
@@ -10,6 +14,18 @@ __meta__ = {
 }
 
 [node name="semaphore" parent="." instance=ExtResource( 2 )]
+
+[node name="StateMachine" type="Node" parent="semaphore"]
+script = ExtResource( 3 )
+
+[node name="Green" type="Node" parent="semaphore/StateMachine"]
+script = ExtResource( 4 )
+
+[node name="Yellow" type="Node" parent="semaphore/StateMachine"]
+script = ExtResource( 5 )
+
+[node name="Red" type="Node" parent="semaphore/StateMachine"]
+script = ExtResource( 6 )
 
 [node name="green" type="Button" parent="."]
 margin_left = 255.0
@@ -41,6 +57,7 @@ mouse_filter = 1
 size_flags_vertical = 0
 text = "Not yet changed"
 [connection signal="currentState_changed" from="semaphore" to="." method="_on_semaphore_currentState_changed"]
+[connection signal="state_changed" from="semaphore/StateMachine" to="semaphore" method="_on_StateMachine_state_changed"]
 [connection signal="pressed" from="green" to="semaphore" method="_on_green_pressed"]
 [connection signal="pressed" from="red" to="semaphore" method="_on_red_pressed"]
 [connection signal="pressed" from="yellow" to="semaphore" method="_on_yellow_pressed"]
